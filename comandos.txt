@@ -1,0 +1,15 @@
+wget https://releases.hashicorp.com/terraform/1.12.2/terraform_1.12.2_linux_amd64.zip
+unzip terraform_1.6.6_linux_amd64.zip
+sudo mv terraform /usr/local/bin/
+terraform -v
+
+#Agregados por la IA, aplicar si plan A no funciona
+sudo apt install awscli -y
+aws configure
+aws sts get-caller-identity
+
+terraform init
+terraform plan
+terraform apply
+
+terraform destroy
