@@ -9,7 +9,7 @@ aws configure
 aws sts get-caller-identity
 
 terraform init
-terraform plan
-terraform apply
+terraform plan -var="key_name=KEY_NAME" -var="aws_access_key=ACCESS_KEY" -var="aws_secret_key=SECRET_KEY"
+terraform apply -var="key_name=KEY_NAME" -auto-approve
 
 terraform destroy
