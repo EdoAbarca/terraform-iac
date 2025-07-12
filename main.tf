@@ -1,5 +1,7 @@
 provider "aws" {
   region = "us-east-1"
+  #access_key = var.aws_access_key
+	#secret_key = var.aws_secret_key
 }
 
 resource "aws_vpc" "dev_vpc" {
@@ -60,10 +62,12 @@ resource "aws_instance" "dev_ec2" {
   ami           = "ami-0c101f26f147fa7fd" # Amazon Linux 2 (us-east-1)
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.public_subnet.id
-  security_groups = [aws_security_group.dev_sg.name]
-  key_name      = var.key_name
+  #security_groups = [aws_security_group.dev_sg.name]
+  #key_name      = var.key_name
+	vpc_security_group_ids = [aws_security_group.dev_sg.id]
+	associate_public_ip_address = true
 
   tags = {
-	Name = "DevInstance"
+		Name = "DevInstance"
   }
 }
